@@ -5,6 +5,7 @@ import Culture from './pages/Culture'
 import Tourism from './pages/Tourism'
 import Gallery from './pages/Gallery'
 import Footer from './components/Footer'
+import Contact from './pages/Contact'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/culture' element={<Culture />} />
         <Route path='/tourism' element={<Tourism />} />
         <Route path='/gallery' element={<Gallery />} />
+        <Route path='/contact' element={<Contact />} />
       </Routes>
       <Footer />
     </>
