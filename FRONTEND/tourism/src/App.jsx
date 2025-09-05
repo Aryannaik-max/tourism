@@ -6,6 +6,7 @@ import Tourism from './pages/Tourism'
 import Gallery from './pages/Gallery'
 import Footer from './components/Footer'
 import Contact from './pages/Contact'
+import Policy from './pages/Policy'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/tourism' element={<Tourism />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/policy' element={<Policy />} />
       </Routes>
       <Footer />
     </>
