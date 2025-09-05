@@ -425,6 +425,16 @@ nav {
   align-items: center;
   background-color: #152A4C;
   color: snow;
+  height: 20rem;
+}
+
+.footer .info-1 .social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  gap: 8%;
+  margin-top: 10%;
 }
 
 .info-1 {
@@ -463,6 +473,7 @@ nav {
 .info-3 {
   width: 40%;
   height: 100%;
+  padding-top: 3%;
 }
 
 .info-3 .top-head {

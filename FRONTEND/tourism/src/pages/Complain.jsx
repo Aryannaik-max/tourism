@@ -97,7 +97,6 @@ const Complain = () => {
         <div className="form-container">
             <form onSubmit={handleSubmit}>
             <div className="form-grid">
-                {/* Row 1 */}
                 <div className="form-group">
                 <label className="label-container" htmlFor="category">
                     <span className="icon"><UserIcon /></span>
@@ -130,7 +129,6 @@ const Complain = () => {
                 </select>
                 </div>
 
-                {/* Row 2 */}
                 <div className="form-group">
                 <label className="label-container" htmlFor="firstName">
                     <span className="icon"><UserIcon /></span>
@@ -147,7 +145,6 @@ const Complain = () => {
                 <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required />
                 </div>
 
-                {/* Row 3 */}
                 <div className="form-group">
                 <span className="label-container">
                     Gender <span className="required-star">*</span>
@@ -172,7 +169,6 @@ const Complain = () => {
                 <textarea id="address" name="address" value={formData.address} onChange={handleChange} required></textarea>
                 </div>
                 
-                {/* Row 4 */}
                 <div className="form-group">
                 <label className="label-container" htmlFor="email">
                     <span className="icon"><EmailIcon /></span>
@@ -192,7 +188,6 @@ const Complain = () => {
                 </div>
                 </div>
 
-                {/* Row 5 */}
                 <div className="form-group">
                 <label className="label-container" htmlFor="complaintDate">
                     <span className="icon"><CalendarIcon /></span>
@@ -214,7 +209,6 @@ const Complain = () => {
                     <div className="file-hint">Size limit is 1MB. Only .jpeg, .jpg, .gif, .pdf, .doc, .docx files are allowed</div>
                 </div>
                 
-                {/* Full width rows */}
                 <div className="form-group full-width">
                 <label className="label-container" htmlFor="complaintDetail">
                     <span className="icon"><AddressIcon /></span>
@@ -229,7 +223,7 @@ const Complain = () => {
                         <input type="checkbox" name="recaptcha" checked={formData.recaptcha} onChange={handleChange} required/>
                         I'm not a robot
                     </label>
-                    {/* In a real app, a reCAPTCHA widget would be rendered here */}
+                    {/* a reCAPTCHA widget would be rendered here */}
                     <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA logo" style={{ height: '32px' }}/>
                 </div>
                 </div>

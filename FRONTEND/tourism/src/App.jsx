@@ -8,12 +8,14 @@ import Footer from './components/Footer'
 import Contact from './pages/Contact'
 import Policy from './pages/Policy'
 import Complain from './pages/Complain'
+import ScrollToTop from './ScrollToTop'
 
 function App() {
 
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/culture' element={<Culture />} />
