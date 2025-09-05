@@ -1,10 +1,39 @@
 const UserService = require('../services/userService');
 const userServcie = new UserService();
+const { Clerk } = require('@clerk/clerk-sdk-node');
+const clerkClient = Clerk({ apiKey: process.env.CLERK_SECRET_KEY });
 
 const createUser = async (req, res) => {
   try {
-    const userData = req.body;
-    const newUser = await userServcie.createUser(userData);
+    const { email, full_name, phone, password } = req.body;
+        const profileData = {
+            travel_style: req.body.travel_style,
+            interests: req.body.interests || [],
+            budget_range: req.body.budget_range,
+            preferred_language: req.body.preferred_language || 'en',
+            date_of_birth: req.body.date_of_birth,
+            nationality: req.body.nationality,
+            accessibility_needs: req.body.accessibility_needs || [],
+            dietary_restrictions: req.body.dietary_restrictions || []
+        };
+
+    const clerkUser = await clerkClient.users.createUser({
+      emailAddress: [email],
+      password,
+      firstName: full_name,
+      publicMetadata: { role: role || "tourist" } 
+    });
+
+    const newUser = await userService.createUser(
+      {
+        email,
+        full_name,
+        phone,
+        clerk_id: clerkUser.id, 
+        user_type: role || "tourist"
+      },
+      profileData
+    );
     res.status(201).json({
         data: newUser,
         success: true,
