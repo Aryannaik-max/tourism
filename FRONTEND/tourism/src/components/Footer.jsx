@@ -8,7 +8,7 @@ const Footer = () => {
                 <h4>Home</h4>
             </Link>
             <Link to={'/contact'}>
-                <h4>Contact</h4>
+                <h4>Contact Us</h4>
             </Link>
             <Link to={'/policy'}>
                 <h4>Policy and Rules</h4>
