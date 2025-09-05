@@ -7,6 +7,7 @@ import Gallery from './pages/Gallery'
 import Footer from './components/Footer'
 import Contact from './pages/Contact'
 import Policy from './pages/Policy'
+import Complain from './pages/Complain'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/policy' element={<Policy />} />
+        <Route path='/complain' element={<Complain />} />
       </Routes>
       <Footer />
     </>
