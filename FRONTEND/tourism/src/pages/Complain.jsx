@@ -63,6 +63,8 @@ const Complain = () => {
 
     const [fileName, setFileName] = useState('No file chosen');
 
+    const today = new Date().toISOString().split('T')[0];
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData(prevState => ({
@@ -196,7 +198,7 @@ const Complain = () => {
                     <span className="icon"><CalendarIcon /></span>
                     Date Of Complain <span className="required-star">*</span>
                 </label>
-                <input type="date" id="complaintDate" name="complaintDate" value={formData.complaintDate} onChange={handleChange} required />
+                <input type="date" id="complaintDate" name="complaintDate" value={formData.complaintDate} onChange={handleChange} required max={today}/>
                 </div>
 
                 <div className="form-group">
