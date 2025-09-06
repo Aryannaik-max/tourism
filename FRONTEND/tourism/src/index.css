@@ -383,6 +383,12 @@ nav {
   gap: 1rem;
 }
 
+@media (max-width: 860px) {
+  .tourism .hot-places {
+    grid-template-columns: 1fr;
+  }
+}
+
 .banner-heading .heading {
   background-color: #5db60a;
   height: 4rem;
@@ -722,4 +728,8 @@ nav {
   align-items: center;
   background-color: #DC143C;
   color: snow;
+}
+
+.map-section {
+  margin-top: 2px;
 }

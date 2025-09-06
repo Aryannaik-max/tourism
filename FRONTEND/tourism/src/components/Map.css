@@ -1,0 +1,166 @@
+.map-app-container {
+    background-color: #F0E1CF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.map-app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.map-app-header h1 {
+    font-size: 2.5rem;
+    color: #006400;
+    font-weight: 700;
+    margin: 0;
+}
+
+.map-app-header p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    aspect-ratio: 4 / 3.5;
+    background: #c8e6c9;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+}
+
+.transform-container {
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    transition: transform 0.1s linear;
+}
+
+.jharkhand-map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.map-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.map-marker:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 20;
+}
+
+.marker-dot {
+    width: 18px;
+    height: 18px;
+    background-color: #FFD700;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.map-marker.active .marker-dot {
+    background-color: #ff4500;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 69, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+}
+
+.info-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+    text-align: left;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.info-box h3 {
+    margin: 0 0 10px 0;
+    color: #006400;
+    font-size: 1.2rem;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.info-box-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f0f0f0;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.info-box-close:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .map-app-header h1 {
+        font-size: 2rem;
+    }
+    .map-app-header p {
+        font-size: 1rem;
+    }
+    .map-wrapper {
+        width: 100%;
+    }
+    .info-box {
+        bottom: 10px;
+        width: calc(100% - 20px);
+    }
+}
