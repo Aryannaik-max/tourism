@@ -1,27 +1,26 @@
 const NormalUserService = require('../services/normalUserService');
+const baseCreateUser = require('./userController');
 const normalUserService = new NormalUserService();
 
-const createNormalUser = async (req, res) => {
-    try {   
-        const normalUser = await normalUserService.create(req.body);
-        res.status(201).json({
-            data: normalUser,
-            success: true,
-            message: 'successfully created normal user',
-            err: {}
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            data: {},
-            success: false,
-            message: 'Error while creating normal user',
-            err: error
-        });
-    }
-}
+const createTourist = async (req, res) => {
+  req.body.role = "tourist";
 
-const getNormalUser = async (req, res) => {
+  const profileData = {
+    role: "tourist",
+    travel_style: req.body.travel_style,
+    interests: req.body.interests || [],
+    budget_range: req.body.budget_range,
+    preferred_language: req.body.preferred_language || 'en',
+    date_of_birth: req.body.date_of_birth,
+    nationality: req.body.nationality,
+    accessibility_needs: req.body.accessibility_needs || [],
+    dietary_restrictions: req.body.dietary_restrictions || []
+  };
+
+  return baseCreateUser.createUser(req, res, profileData);
+};
+
+const getTourist = async (req, res) => {
     try {
         const normalUser = await normalUserService.read(req.params.id);
         if(normalUser) {
@@ -51,7 +50,7 @@ const getNormalUser = async (req, res) => {
     }
 }
 
-const updateNormalUser = async (req, res) => {
+const updateTourist = async (req, res) => {
     try {
         const normalUser = await normalUserService.update(req.params.id, req.body);
         if(normalUser) {
@@ -81,7 +80,7 @@ const updateNormalUser = async (req, res) => {
     }
 }
 
-const deleteNormalUser = async (req, res) => {
+const deleteTourist = async (req, res) => {
     try {
         const normalUser = await normalUserService.delete(req.params.id);
         if(normalUser) {
@@ -112,8 +111,8 @@ const deleteNormalUser = async (req, res) => {
 }
 
 module.exports = {
-    createNormalUser,
-    getNormalUser,
-    updateNormalUser,
-    deleteNormalUser
+    createTourist,
+    getTourist,
+    updateTourist,
+    deleteTourist
 }

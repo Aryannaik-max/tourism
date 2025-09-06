@@ -1,27 +1,19 @@
 const UserService = require('../services/userService');
-const userServcie = new UserService();
+const userService = new UserService();
 const { Clerk } = require('@clerk/clerk-sdk-node');
 const clerkClient = Clerk({ apiKey: process.env.CLERK_SECRET_KEY });
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, profileData) => {
   try {
-    const { email, full_name, phone, password } = req.body;
-        const profileData = {
-            travel_style: req.body.travel_style,
-            interests: req.body.interests || [],
-            budget_range: req.body.budget_range,
-            preferred_language: req.body.preferred_language || 'en',
-            date_of_birth: req.body.date_of_birth,
-            nationality: req.body.nationality,
-            accessibility_needs: req.body.accessibility_needs || [],
-            dietary_restrictions: req.body.dietary_restrictions || []
-        };
+    const { email, full_name, phone, password, role } = req.body;
+
+
 
     const clerkUser = await clerkClient.users.createUser({
       emailAddress: [email],
       password,
       firstName: full_name,
-      publicMetadata: { role: role || "tourist" } 
+      publicMetadata: { role } 
     });
 
     const newUser = await userService.createUser(
@@ -29,31 +21,42 @@ const createUser = async (req, res) => {
         email,
         full_name,
         phone,
-        clerk_id: clerkUser.id, 
-        user_type: role || "tourist"
+        clerk_id: clerkUser.id,
+        user_type: role
       },
       profileData
     );
-    res.status(201).json({
-        data: newUser,
-        success: true,
-        message: 'User created successfully',
+
+    if (!newUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Failed to create Supabase user",
         err: {}
+      });
+    }
+
+    res.status(201).json({
+      data: newUser,
+      success: true,
+      message: "User created successfully",
+      err: {}
     });
+
   } catch (error) {
-    res.status(500).json({ 
-        data: {},
-        success: false, 
-        message: 'Failed to create user', 
-        err: error
-     });
+    res.status(500).json({
+      data: {},
+      success: false,
+      message: "Failed to create user",
+      err: error.message
+    });
   }
 };
+
 
 const getUser = async (req, res) => {
   try {
     const userId = req.params.id;   
-    const user = await userServcie.getUserById(userId); 
+    const user = await userService.getUserById(userId); 
     res.status(200).json({
         data: user,
         success: true,

@@ -5,29 +5,23 @@ class UserService extends CrudService {
         super('Users');
     }
 
-    async createUser (userData, profileData) {
+    async createUser(userData, profileData) {
         try {
             const { data: user, error: userError } = await this.supabase
             .from(this.tableName)
             .insert([userData])
             .single();
-            if (userError) {
-                console.log('Error creating user:', userError);
-                return null;
-            }
-
-            const profileResult = await this.createProfileOnRole( user.id, profileData );
-            if ( !profileResult ) {
+            if (userError) throw new Error(userError.message);
+            const profileResult = await this.createProfileOnRole(user.id, profileData);
+            if (!profileResult) {
                 await this.delete(user.id);
-                return null;
+                throw new Error("Failed to create profile");
             }
-            
-            return { user, profile: profileResult };
+             return { user, profile: profileResult };
         } catch (error) {
             console.log('Error creating user:', error);
-            return null;
+            throw error;
         }
-
     }
 
     async createProfileOnRole( userId, profileData ) {
