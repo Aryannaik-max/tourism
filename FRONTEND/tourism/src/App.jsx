@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Policy from './pages/Policy'
 import Complain from './pages/Complain'
 import ScrollToTop from './ScrollToTop'
+import TransportServices from './pages/TransportServices'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/policy' element={<Policy />} />
         <Route path='/complain' element={<Complain />} />
+        <Route path='/transport' element={<TransportServices />} />
       </Routes>
       <Footer />
     </>

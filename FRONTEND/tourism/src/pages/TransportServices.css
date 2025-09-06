@@ -1,0 +1,176 @@
+.app-container {
+    height: 100vh;
+    width: 100vw;
+    margin-top: 4rem;
+}
+
+.app-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28rem;
+}
+
+.vehicle-icon-container {
+    padding: 0.25rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.bus-icon-bg { 
+    background-color: #3b82f6; 
+}
+.train-icon-bg { 
+    background-color: #22c55e; 
+}
+
+.info-panel {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    background-color: #ffffff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel-close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.info-panel-close-btn:hover {
+    color: #1f2937; 
+}
+
+.info-panel-header {
+    display: flex; align-items: center; 
+}
+
+.info-panel-icon-wrapper {
+    padding: 0.5rem;
+    border-radius: 9999px;
+}
+.bus-info-icon-bg { 
+    background-color: #dbeafe; 
+}
+.train-info-icon-bg { 
+    background-color: #dcfce7; 
+}
+.info-panel-details { 
+    margin-left: 1rem; 
+}
+.info-panel-title { 
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    color: #1f2937; 
+    margin:0; 
+}
+.info-panel-subtitle { 
+    color: #4b5563; 
+    margin:0; 
+}
+.info-panel-body { 
+    margin-top: 1rem; 
+}
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+.status-badge {
+    font-weight: 500;
+    color: #16a34a;
+    background-color: #dcfce7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+}
+.progress-bar-container {
+    width: 100%;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    height: 0.625rem;
+    margin-top: 0.5rem;
+}
+.progress-bar {
+    background-color: #4f46e5;
+    height: 0.625rem;
+    border-radius: 9999px;
+}
+.progress-label {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 0.25rem;
+    color: #9ca3ac;
+}
+
+.user-marker {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #3b82f6;
+    border-radius: 9999px;
+    border: 2px solid white;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+.vehicle-marker-wrapper { 
+    position: relative; 
+}
+.vehicle-marker-blur {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    opacity: 0.75;
+    border-radius: 9999px;
+    filter: blur(4px);
+}
+.vehicle-marker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+.bus-marker-bg { 
+    background-color: #3b82f6; 
+}
+.train-marker-bg { 
+    background-color: #22c55e; 
+}
+.bus-marker-bg-strong { 
+    background-color: #2563eb; 
+}
+.train-marker-bg-strong { 
+    background-color: #16a34a; 
+}
+
+.animate-slide-up {
+    animation: slide-up 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-up {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
