@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import YouTubeCarousel from "../components/YouTubeCarousel"
 import Map from "../components/Map"
+import ExploreTransport from "../components/ExploreTransport"
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
     </section>
     <section className="map-section">
       <Map />
+    </section>
+    <section className="transport-line">
+      <ExploreTransport />
     </section>
     </>
   )

@@ -733,3 +733,11 @@ nav {
 .map-section {
   margin-top: 2px;
 }
+
+.transport-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F0E1CF;
+  padding-bottom: 1rem;
+}

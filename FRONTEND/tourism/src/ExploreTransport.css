@@ -1,0 +1,50 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    width: 50%;
+    background-color: lawngreen;
+    border-radius: 1rem;
+}
+
+.text-container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.indicator {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.indicator .button {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    height: 88%;
+    width: 98%;
+    margin-right: 5px;
+    animation: pulse 1.5s infinite;
+}
+
+.indicator .button a {
+    text-decoration: none;
+    color: snow;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 69, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+}
