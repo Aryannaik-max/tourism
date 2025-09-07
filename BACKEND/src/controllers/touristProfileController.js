@@ -3,19 +3,21 @@ const baseCreateUser = require('./userController');
 const userService = new UserService();
 
 const createTourist = async (req, res) => {
+  // Set role in request body
   req.body.role = "tourist";
 
+  // Map the fields correctly
   const profileData = {
-    role: "tourist",
-    travel_style: req.body.travel_style,
-    interests: req.body.interests || [],
-    budget_range: req.body.budget_range,
-    preferred_language: req.body.preferred_language || 'en',
-    date_of_birth: req.body.date_of_birth,
+    name: req.body.name || req.body.full_name, // Handle both field names
+    email: req.body.email,
+    phone_number: req.body.phone_number || req.body.phone, // Handle both field names
+    preferred_destinations: req.body.preferred_destinations || null,
+    interest: req.body.interest,
     nationality: req.body.nationality,
-    accessibility_needs: req.body.accessibility_needs || [],
-    dietary_restrictions: req.body.dietary_restrictions || []
+    preferred_language: req.body.preferred_language || 'en'
   };
+
+  console.log('Tourist profile data:', profileData); // Debug log
 
   return baseCreateUser.createUser(req, res, profileData);
 };
@@ -24,7 +26,7 @@ const getTourist = async (req, res) => {
     try {
         const tourist = await userService.read(req.params.id);
         if(tourist) {
-            res.status(201).json({
+            res.status(200).json({
                 data: tourist,
                 success: true,
                 message: 'tourist fetched successfully',
@@ -52,12 +54,12 @@ const getTourist = async (req, res) => {
 
 const updateTourist = async (req, res) => {
     try {
-        const normalUser = await normalUserService.update(req.params.id, req.body);
-        if(normalUser) {
-            res.status(201).json({
-                data: normalUser,
+        const tourist = await userService.update(req.params.id, req.body);
+        if(tourist) {
+            res.status(200).json({
+                data: tourist,
                 success: true,
-                message: 'normal user updated successfully',
+                message: 'tourist updated successfully',
                 err: {}
             });
         }
@@ -65,7 +67,7 @@ const updateTourist = async (req, res) => {
             res.status(404).json({
                 data: {},
                 success: false,
-                message: 'normal user not found',
+                message: 'tourist not found',
                 err: {}
             });
         }
@@ -74,7 +76,7 @@ const updateTourist = async (req, res) => {
         res.status(500).json({
             data: {},
             success: false,
-            message: 'Error while updating normal user',
+            message: 'Error while updating tourist',
             err: error
         });
     }
@@ -82,12 +84,12 @@ const updateTourist = async (req, res) => {
 
 const deleteTourist = async (req, res) => {
     try {
-        const normalUser = await normalUserService.delete(req.params.id);
-        if(normalUser) {
-            res.status(201).json({
-                data: normalUser,
+        const tourist = await userService.delete(req.params.id);
+        if(tourist) {
+            res.status(200).json({
+                data: tourist,
                 success: true,
-                message: 'normal user deleted successfully',
+                message: 'tourist deleted successfully',
                 err: {}
             });
         }
@@ -95,7 +97,7 @@ const deleteTourist = async (req, res) => {
             res.status(404).json({
                 data: {},
                 success: false,
-                message: 'normal user not found',
+                message: 'tourist not found',
                 err: {}
             });
         } 
@@ -104,7 +106,7 @@ const deleteTourist = async (req, res) => {
         res.status(500).json({ 
             data: {},
             success: false,
-            message: 'Error while deleting normal user',
+            message: 'Error while deleting tourist',
             err: error
         });
     }

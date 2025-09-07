@@ -7,7 +7,7 @@ class CrudService {
 
     async create(data) {
         try {
-            const { data: createdData, error } = await supabase.from(this.tableName).insert([data]);
+            const { data: createdData, error } = await supabase.from(this.tableName).insert([data]).select().single();
             if( error ) {
                 console.log('Error creating data:', error);
                 return null;;
@@ -21,7 +21,7 @@ class CrudService {
 
     async read(id) {
         try {
-            const { data, error } = await supabase.form(this.tableName).select('*').eq('id', id).single();
+            const { data, error } = await supabase.from(this.tableName).select('*').eq('id', id).single();
             if( error ) {
                 console.log('Error reading data:', error);
                 return null;

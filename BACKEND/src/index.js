@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use('/api', v1ApiRoutes);
 
 
-app.post('/user', ClerkExpressRequireAuth(), );
+// app.post('/user', ClerkExpressRequireAuth(), );
 
 app.listen(PORT, () => {
     console.log('Server is running on port ', PORT);
