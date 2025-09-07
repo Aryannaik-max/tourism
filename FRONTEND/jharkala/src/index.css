@@ -112,6 +112,8 @@ body {
 .mobile-menu-button {
   display: block;
   color: var(--gray-600);
+  background-color: transparent;
+  border: none;
 }
 .mobile-menu-button:hover {
   color: var(--emerald-700);
