@@ -1,10 +1,10 @@
-const IteneraryService = require('../services/iteneraryService');
-const iteneraryService = new IteneraryService();
+const ItineraryService = require('../services/iteneraryService');
+const itineraryService = new ItineraryService();
 
-const createItenerary = async (req, res) => {
+const createItinerary = async (req, res) => {
     try {
         const { title, description, duration, activities, accommodations, transportation, budget, userId } = req.body;
-        const iteneraryData = {
+        const itineraryData = {
             title,
             description,
             duration,      
@@ -14,11 +14,11 @@ const createItenerary = async (req, res) => {
             budget,
             user_id: userId
         };
-        const newItenerary = await iteneraryService.create(iteneraryData);
+        const newItinerary = await itineraryService.create(itineraryData);
         res.status(201).json({
-            data: newItenerary,
+            data: newItinerary,
             success: true,
-            message: 'Itenerary created successfully',
+            message: 'Itinerary created successfully',
             err: {}
         });
     } catch (error) {
@@ -31,41 +31,41 @@ const createItenerary = async (req, res) => {
     }
 }
 
-const getItenerary = async (req, res) => {
+const getItinerary = async (req, res) => {
     try {
-        const iteneraryId = req.params.id;
-        const itenerary = await iteneraryService.read(iteneraryId);
+        const itineraryId = req.params.id;
+        const itinerary = await itineraryService.read(itineraryId);
         res.status(200).json({
-            data: itenerary,
+            data: itinerary,
             success: true,
-            message: 'Itenerary fetched successfully',
+            message: 'Itinerary fetched successfully',
             err: {}
         });
     } catch (error) {
         res.status(500).json({
             data: {},
             success: false,
-            message: 'Failed to fetch itenerary',
+            message: 'Failed to fetch itinerary',
             err: error
         });
     }
 }
 
-const deleteItenerary = async (req, res) => {
+const deleteItinerary = async (req, res) => {
     try {
-        const iteneraryId = req.params.id;
-        await iteneraryService.delete(iteneraryId);
+        const itineraryId = req.params.id;
+        await itineraryService.delete(itineraryId);
         res.status(200).json({
             data: {},
             success: true,
-            message: 'Itenerary deleted successfully',
+            message: 'Itinerary deleted successfully',
             err: {}
         });
     } catch (error) {
         res.status(500).json({
             data: {},
             success: false,
-            message: 'Failed to delete itenerary',
+            message: 'Failed to delete itinerary',
             err: error
         });
     }
@@ -73,7 +73,7 @@ const deleteItenerary = async (req, res) => {
 
 
 module.exports = {
-    createItenerary,
-    getItenerary,
-    deleteItenerary
+    createItinerary,
+    getItinerary,
+    deleteItinerary
 };

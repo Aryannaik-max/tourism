@@ -21,7 +21,7 @@ const createUser = async (req, res, profileData) => {
         email,
         full_name,
         phone,
-        clerk_id: clerkUser.id,
+        clerk_user_id: clerkUser.id,
         user_type: role
       },
       profileData

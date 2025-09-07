@@ -1,6 +1,6 @@
-const NormalUserService = require('../services/normalUserService');
+const UserService = require('../services/userService')
 const baseCreateUser = require('./userController');
-const normalUserService = new NormalUserService();
+const userService = new UserService();
 
 const createTourist = async (req, res) => {
   req.body.role = "tourist";
@@ -22,12 +22,12 @@ const createTourist = async (req, res) => {
 
 const getTourist = async (req, res) => {
     try {
-        const normalUser = await normalUserService.read(req.params.id);
-        if(normalUser) {
+        const tourist = await userService.read(req.params.id);
+        if(tourist) {
             res.status(201).json({
-                data: normalUser,
+                data: tourist,
                 success: true,
-                message: 'normal user fetched successfully',
+                message: 'tourist fetched successfully',
                 err: {}
             });
         }
@@ -35,7 +35,7 @@ const getTourist = async (req, res) => {
             res.status(404).json({
                 data: {},
                 success: false,
-                message: 'normal user not found',
+                message: 'tourist not found',
                 err: {}
             });
         }
@@ -44,7 +44,7 @@ const getTourist = async (req, res) => {
         res.status(500).json({
             data: {},
             success: false,
-            message: 'Error while fetching normal user',
+            message: 'Error while fetching tourist ',
             err: error
         });
     }

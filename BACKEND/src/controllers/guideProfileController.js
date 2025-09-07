@@ -1,4 +1,4 @@
-const baseCreateUser = require('./baseCreateUser');
+const baseCreateUser = require('./userController');
 
 const createGuide = async (req, res) => {
     try {
