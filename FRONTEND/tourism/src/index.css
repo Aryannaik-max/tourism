@@ -62,23 +62,16 @@ nav {
 
 .nav-link:not(:last-child) {
   border-radius: 0.5rem;
-  height: 85%;
   padding: 0.7rem;
 }
 
 .nav-link:not(:last-child):hover {
-  border-radius: 0.5rem;
-  height: 85%;
-  padding: 0.7rem;
   background-color: #80c242;
 }
 
 .nav-link.active {
   color: white;
   background-color: #448408;
-  border-radius: 0.5rem;
-  height: 85%;
-  padding: 0.7rem;
 }
 
 .nav-link.active:hover {

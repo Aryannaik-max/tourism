@@ -10,6 +10,7 @@ import Policy from './pages/Policy'
 import Complain from './pages/Complain'
 import ScrollToTop from './ScrollToTop'
 import TransportServices from './pages/TransportServices'
+// import { AuthProvider } from './context/AuthContext'
 
 function App() {
 
@@ -17,16 +18,18 @@ function App() {
     <>
       <Navbar />
       <ScrollToTop />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/culture' element={<Culture />} />
-        <Route path='/tourism' element={<Tourism />} />
-        <Route path='/gallery' element={<Gallery />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/policy' element={<Policy />} />
-        <Route path='/complain' element={<Complain />} />
-        <Route path='/transport' element={<TransportServices />} />
-      </Routes>
+      {/* <AuthProvider> */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/culture' element={<Culture />} />
+          <Route path='/tourism' element={<Tourism />} />
+          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/policy' element={<Policy />} />
+          <Route path='/complain' element={<Complain />} />
+          <Route path='/transport' element={<TransportServices />} />
+        </Routes>
+      {/* </AuthProvider> */}
       <Footer />
     </>
   )
