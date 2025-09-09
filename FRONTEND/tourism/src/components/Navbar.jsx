@@ -1,10 +1,26 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import UserAvatar from './UserAvatar'
 
 const Navbar = () => {
+    const [user, setUser] = useState(null)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
+
+    const handleLogin = () => {
+        //API Call Here
+        const loggedInUser = {
+            name: 'Robert',
+            avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
+        }
+        setUser(loggedInUser)
+    }
+
+    const handleLogout = () => {
+        setUser(null)
+        console.log('User Logged Out');
+    }
 
     const go = (path) => () => {
         navigate(path)
@@ -56,13 +72,18 @@ const Navbar = () => {
                 >
                     Gallery
                 </div>
-                <div className={`nav-link signup-link`}
-                onClick={go('/signup')}
+                {user ? (
+                    <UserAvatar user={user} onLogout={handleLogout} />
+                ) : (
+                    <div className={`nav-link signup-link`}
+                // onClick={go('/signup')}
                 role='button'
                 tabIndex={0}
+                onClick={handleLogin}
                 >
                     SIGN IN
                 </div>
+                )}
             </div>
         </div>  
     </nav>

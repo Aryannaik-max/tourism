@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Host Grotesk', sans-serif;
 }
 
@@ -37,7 +38,8 @@ nav {
   height: 95%;
   width: 100%;
   margin-top: 1%;
-  object-fit: cover;
+  object-fit: contain;
+  padding-right: 35%;
 }
 
 .nav-links{
@@ -178,6 +180,8 @@ nav {
   position: absolute;
   font-size: 1.8rem;
   bottom: 30%;
+  width: 100%;
+  text-align: center;
 }
 
 .explore-btn {
