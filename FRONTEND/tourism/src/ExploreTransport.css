@@ -10,6 +10,7 @@
 
 .text-container {
     width: 70%;
+    height: 100%;
     display: flex;
     align-items: center;
     padding-left: 8%;
@@ -18,10 +19,12 @@
 }
 
 .indicator {
+    height: 100%;
     width: 30%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 100%;
+    padding-right: 1px;
 }
 
 .indicator .button {
@@ -32,8 +35,8 @@
     border-radius: 0.8rem;
     height: 88%;
     width: 98%;
-    margin-right: 5px;
     animation: pulse 1.5s infinite;
+    margin: 0;
 }
 
 .indicator .button a {
