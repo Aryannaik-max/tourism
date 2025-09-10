@@ -2,6 +2,18 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const go = (path) => () => {
+        navigate(path)
+        setIsMenuOpen(false)
+    }
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
   return (
     <>
       <nav className="bg-white border-2  shadow-md flex justify-center">
