@@ -10,6 +10,10 @@ import Policy from './pages/Policy'
 import Complain from './pages/Complain'
 import ScrollToTop from './ScrollToTop'
 import TransportServices from './pages/TransportServices'
+import Signup from './pages/Signup'
+import TouristSignupPage from './pages/TouristSignUp'
+import VendorSignupPage from './pages/VendorSignUp'
+import HotelOwnerSignupPage from './pages/HotelOwnerSignUp'
 
 function App() {
 
@@ -26,6 +30,10 @@ function App() {
         <Route path='/policy' element={<Policy />} />
         <Route path='/complain' element={<Complain />} />
         <Route path='/transport' element={<TransportServices />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/tourist/signup' element={< TouristSignupPage/>} />
+        <Route path='/vendor/signup' element={< VendorSignupPage/>} />
+        <Route path='/hotelowner/signup' element={< HotelOwnerSignupPage/>} />
       </Routes>
       <Footer />
     </>

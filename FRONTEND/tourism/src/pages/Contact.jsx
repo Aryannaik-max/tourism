@@ -1,5 +1,64 @@
 import { useState } from 'react';
-import AccordionItem from '../components/AccordionItem'
+
+// Inline AccordionItem Component for a self-contained solution
+const AccordionItem = ({ item, isOpen, onClick }) => {
+  return (
+    <div className="bg-white rounded-xl shadow-md transition-all duration-300 ease-in-out hover:shadow-lg overflow-hidden my-4">
+      <button
+        className="flex justify-between items-center w-full p-6 text-xl font-semibold text-left text-[#152A4C] focus:outline-none"
+        onClick={onClick}
+      >
+        <span>{item.title}</span>
+        <svg
+          className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div
+        className={`grid transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+      >
+        <div className="overflow-hidden p-6 pt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {item.content.map((contact, idx) => (
+              <div key={idx} className="bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col items-center text-center">
+                <img 
+                  src={contact.avatarUrl} 
+                  alt={contact.name} 
+                  className="w-20 h-20 rounded-full mb-4" 
+                  onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/80x80/cccccc/333333?text=User'; }}
+                />
+                <h4 className="text-lg font-semibold text-[#152A4C]">{contact.name}</h4>
+                <p className="text-gray-600 text-sm mb-2">{contact.subheading}</p>
+                {contact.phone && contact.phone !== 'N/A' && (
+                  <p className="text-gray-700"><strong>Phone:</strong> <a href={`tel:${contact.phone}`} className="text-[#4CAF50] hover:underline">{contact.phone}</a></p>
+                )}
+                {contact.landline && contact.landline !== 'N/A' && (
+                  <p className="text-gray-700"><strong>Landline:</strong> <a href={`tel:${contact.landline}`} className="text-[#4CAF50] hover:underline">{contact.landline}</a></p>
+                )}
+                {contact.fax && contact.fax !== 'N/A' && (
+                  <p className="text-gray-700"><strong>Fax:</strong> {contact.fax}</p>
+                )}
+                {contact.email && contact.email !== 'N/A' && (
+                  <p className="text-gray-700">
+                    <strong>Email:</strong> <a href={`mailto:${contact.email}`} className="text-[#4CAF50] hover:underline">{contact.email}</a>
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Contact = () => {
   const accordionData = [
@@ -294,36 +353,34 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact_us">
-        <div className="banner">
-            <img src="https://tourism.jharkhand.gov.in/app-assets/images/common-banner.jpg" alt="" />
-            <div className="banner-text">
-                <h1>Contact Us</h1>
-            </div>
+    <div className="bg-gray-100 min-h-screen font-sans">
+      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden mb-8">
+        <img 
+          src="https://tourism.jharkhand.gov.in/app-assets/images/common-banner.jpg" 
+          alt="Contact Us Banner" 
+          className="w-full h-full object-cover" 
+        />
+        <div className="absolute inset-0 bg-[#152A4C] bg-opacity-70 flex items-center justify-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white">Contact Us</h1>
         </div>
-        <div className="heading">
-            <h2>STAFF DIRECTORY</h2>
+      </div>
+      
+      <div className="max-w-6xl mx-auto p-4 md:p-8">
+        <h2 className="text-3xl font-bold text-[#152A4C] text-center mb-8">STAFF DIRECTORY</h2>
+        
+        <div className="accordion-wrapper max-w-4xl mx-auto">
+          {accordionData.map((item, index) => (
+            <AccordionItem
+              key={index}
+              item={item}
+              isOpen={openIndex === index}
+              onClick={() => handleItemClick(index)}
+            />
+          ))}
         </div>
-        <div className="dropdowns">
-            <div className="app-container">
-              <div className="accordion-wrapper">
-                <h1 className="main-title">Contact & Support</h1>
-                {accordionData.map((item, index) => (
-                  <AccordionItem
-                    key={index}
-                    item={item}
-                    isOpen={openIndex === index}
-                    onClick={() => handleItemClick(index)}
-                  />
-                ))}
-              </div>
-              <button className="info-button">
-                i
-              </button>
-          </div>
-        </div>
+      </div>
     </div>
   )
 }
 
-export default Contact
+export default Contact;

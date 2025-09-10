@@ -8,16 +8,16 @@ const createTourist = async (req, res) => {
 
   // Map the fields correctly
   const profileData = {
-    name: req.body.name || req.body.full_name, // Handle both field names
+    name: req.body.name || req.body.full_name,
     email: req.body.email,
-    phone_number: req.body.phone_number || req.body.phone, // Handle both field names
+    phone_number: req.body.phone_number || req.body.phone, 
     preferred_destinations: req.body.preferred_destinations || null,
     interest: req.body.interest,
     nationality: req.body.nationality,
     preferred_language: req.body.preferred_language || 'en'
   };
 
-  console.log('Tourist profile data:', profileData); // Debug log
+  console.log('Tourist profile data:', profileData); 
 
   return baseCreateUser.createUser(req, res, profileData);
 };

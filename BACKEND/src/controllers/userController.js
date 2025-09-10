@@ -23,11 +23,11 @@ const createUser = async (req, res, profileData) => {
     const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
 
     const payload = {
-      emailAddress: [email],       // ✅ must be array
+      emailAddress: [email],       
       password,
       firstName,
       lastName,
-      ...(phone ? { phoneNumbers: [phone] } : {}), // ✅ must be array
+      ...(phone ? { phoneNumbers: [phone] } : {}), 
       publicMetadata: { role }
     };
 
@@ -38,7 +38,7 @@ const createUser = async (req, res, profileData) => {
     const newUser = await userService.createUser(
       {
         email,
-        role, // 'tourist' | 'guide' | 'hotel_owner'
+        role, 
         clerk_user_id: clerkUser.id
       },
       profileData

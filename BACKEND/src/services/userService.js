@@ -9,26 +9,23 @@ class UserService extends CrudService {
 
     async createUser(userData, profileData) {
         try {
-            // Create user in Users table
+            
             const { data: user, error: userError } = await this.supabase
                 .from(this.tableName)
                 .insert([userData])
                 .select()
                 .single();
-            
+
             if (userError) throw new Error(userError.message);
 
-            // Add role to profileData for createProfileOnRole
             const profileDataWithRole = {
                 ...profileData,
-                role: userData.role // Pass role from userData
+                role: userData.role 
             };
 
-            // Create profile based on role
             const profileResult = await this.createProfileOnRole(user.id, profileDataWithRole);
             
             if (!profileResult) {
-                // Cleanup user if profile creation fails
                 await this.delete(user.id);
                 throw new Error("Failed to create profile");
             }
@@ -44,7 +41,7 @@ class UserService extends CrudService {
         try {
             let tableName, data;
             
-            console.log('Profile data received:', profileData); // Debug log
+            console.log('Profile data received:', profileData); 
             
             switch (profileData.role) {
                 case 'tourist':
@@ -64,7 +61,6 @@ class UserService extends CrudService {
                     tableName = 'guide_profile';
                     data = {
                         user_id: userId,
-                        // Add guide-specific fields here
                         ...profileData
                     };
                     break;
@@ -72,7 +68,6 @@ class UserService extends CrudService {
                     tableName = 'hotel_owner_profile';
                     data = {
                         user_id: userId,
-                        // Add hotel owner-specific fields here
                         ...profileData
                     };
                     break;
@@ -81,12 +76,12 @@ class UserService extends CrudService {
                     return null;
             }
 
-            console.log(`Inserting into ${tableName}:`, data); // Debug log
+            console.log(`Inserting into ${tableName}:`, data); 
 
             const { data: profile, error: profileError } = await this.supabase
                 .from(tableName)
                 .insert([data])
-                .select() // Add .select() to return the inserted data
+                .select() 
                 .single();
             
             if (profileError) {
