@@ -9,6 +9,7 @@ const TransportServices = () => {
     const userMarkerRef = useRef(null);
     const vehicleMarkersRef = useRef({});
 
+    const [mapReady, setMapReady] = useState(false)
     const [userPosition, setUserPosition] = useState(null);
     const [vehicles, setVehicles] = useState([]);
     const [selectedVehicle, setSelectedVehicle] = useState(null);
@@ -79,16 +80,17 @@ const TransportServices = () => {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(mapRef.current);
             initializeVehicles();
+            setMapReady(true)
         };
 
         return () => {
-            document.head.removeChild(leafletCss);
-            document.body.removeChild(leafletJs);
+            if (document.head.contains(leafletCss)) document.head.removeChild(leafletCss);
+            if (document.body.contains(leafletJs)) document.body.removeChild(leafletJs);
         };
     }, []);
 
     useEffect(() => {
-        if (!mapRef.current) return;
+        if(!mapReady) return;
         const success = (position) => {
             const { latitude, longitude } = position.coords;
             const pos = [latitude, longitude];
@@ -109,15 +111,15 @@ const TransportServices = () => {
         const error = (err) => console.warn(`ERROR(${err.code}): ${err.message}`);
         const watcher = navigator.geolocation.watchPosition(success, error, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
         return () => navigator.geolocation.clearWatch(watcher);
-    }, [mapRef.current]);
+    }, [mapReady]);
 
     useEffect(() => {
-        if (!mapRef.current || vehicles.length === 0) return;
+        if (!mapReady || vehicles.length === 0) return;
         const simulationInterval = setInterval(() => {
             setVehicles(prevVehicles =>
                 prevVehicles.map(v => {
                     let { currentLeg, legProgress, path } = v;
-                    legProgress += 0.1;
+                    legProgress += 0.05;
                     if (legProgress >= 1.0) {
                         legProgress = 0;
                         currentLeg = (currentLeg + 1) % (path.length - 1);
@@ -125,8 +127,7 @@ const TransportServices = () => {
                     const startPoint = path[currentLeg];
                     const endPoint = path[currentLeg + 1];
                     if (!startPoint || !endPoint) {
-                        currentLeg = 0; legProgress = 0;
-                        return { ...v, position: path[0], currentLeg, legProgress, progress: 0 };
+                        return { ...v, position: path[0], currentLeg: 0, legProgress: 0, progress: 0 };
                     }
                     const lat = startPoint[0] + (endPoint[0] - startPoint[0]) * legProgress;
                     const lng = startPoint[1] + (endPoint[1] - startPoint[1]) * legProgress;
@@ -135,12 +136,12 @@ const TransportServices = () => {
                     return { ...v, position: [lat, lng], currentLeg, legProgress, progress };
                 })
             );
-        }, 2000);
+        }, 1000);
         return () => clearInterval(simulationInterval);
-    }, [mapRef.current, vehicles.length > 0]);
+    }, [mapReady, vehicles.length]);
 
     useEffect(() => {
-        if (!mapRef.current) return;
+        if (!mapReady) return;
         vehicles.forEach(v => {
             const vehicleHtmlIcon = `
               <div class="vehicle-marker-wrapper">
@@ -160,14 +161,15 @@ const TransportServices = () => {
                     });
             } else {
                 vehicleMarkersRef.current[v.id].setLatLng(v.position);
+                vehicleMarkersRef.current[v.id].setIcon(customIcon)
                  if(selectedVehicle && selectedVehicle.id === v.id){ setSelectedVehicle(v); }
             }
         });
-    }, [vehicles, selectedVehicle]);
+    }, [mapReady, vehicles, selectedVehicle]);
   return (
     <div className="transport-section app-container">
         <Header />
-        <div ref={mapContainerRef} style={{ height: '100%', width: '100%', zIndex: 0 }}></div>
+        <div ref={mapContainerRef} style={{ height: '100%', width: '100%', zIndex: 1 }}></div>
         <VehichInfoPanel vehicle={selectedVehicle} onClose={() => setSelectedVehicle(null)} />
     </div>
   )

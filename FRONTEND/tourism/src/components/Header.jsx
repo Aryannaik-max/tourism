@@ -182,9 +182,6 @@ const App = () => {
       <main className="container mx-auto mt-8 p-4">
         {renderPageContent()}
       </main>
-
-      {/* Tailwind CSS CDN script, necessary for the classes to work */}
-      // <script src="https://cdn.tailwindcss.com"></script>
     </div>
   );
 };

@@ -1,10 +1,27 @@
-import { Link } from "react-router-dom";
+
+import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 
 const Navbar = () => {
+    const [user, setUser] = useState(null)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
+
+    const handleLogin = () => {
+        //API Call Here
+        const loggedInUser = {
+            name: 'Robert',
+            avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
+        }
+        setUser(loggedInUser)
+    }
+
+    const handleLogout = () => {
+        setUser(null)
+        console.log('User Logged Out');
+    }
 
     const go = (path) => () => {
         navigate(path)

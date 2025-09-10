@@ -1,0 +1,85 @@
+.avatar-menu-container {
+    position: relative;
+}
+
+.avatar-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.avatar-button:focus {
+    outline: none;
+}
+
+.avatar-image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid #6366f1;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.avatar-button:hover .avatar-image {
+    border-color: #818cf8;
+}
+
+.dropdown-modal {
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 12rem;
+    background-color: white;
+    color: #2d3748;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 0.5rem 0;
+    z-index: 10;
+    animation: fade-in-down 0.2s ease-out forwards;
+}
+
+.modal-link, 
+.modal-logout-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #4a5568;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-link:hover, 
+.modal-logout-button:hover {
+    background-color: #6366f1;
+    color: white;
+}
+
+.modal-logout-button {
+    color: #e53e3e;
+}
+
+.modal-logout-button:hover {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.modal-divider {
+    border-top: 1px solid #e2e8f0;
+    margin: 0.25rem 0;
+}
+
+@keyframes fade-in-down {
+    from {
+    opacity: 0;
+    transform: translateY(-10px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
