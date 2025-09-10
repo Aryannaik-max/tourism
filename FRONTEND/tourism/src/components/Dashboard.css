@@ -9,26 +9,26 @@
     --green-500: #22c55e; --green-600: #16a34a; --red-500: #ef4444;
 }
 
-.app-container {
-    height: 100%;
+.dashboard-container {
+    min-height: 100%;
     background-color: var(--slate-50);
     color: var(--slate-800);
     padding: 1rem;
 }
 
-.app-wrapper { 
+.dashboard-wrapper {
     max-width: 90%; 
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    margin-top: 4rem;
 }
 
 .header { 
     margin-bottom: 2rem; 
     display: flex; 
-    justify-content: 
-    space-between; 
-    align-items: center; 
+    justify-content: space-between; 
+    align-items: center;
 }
 
 .header h1 { 

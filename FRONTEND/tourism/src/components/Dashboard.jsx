@@ -32,8 +32,8 @@ const Dashboard = () => {
     const gradient = roleColors[role] || 'linear-gradient(to bottom, #64748b, #475569)';
 
   return (
-    <div className="app-container">
-        <div className="app-wrapper">
+    <div className="dashboard-container">
+        <div className="dashboard-wrapper">
             <header className="header">
                 <div>
                     <h1>Dashboard</h1>
