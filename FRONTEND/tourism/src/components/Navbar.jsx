@@ -4,33 +4,33 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 
 const Navbar = () => {
-    const [user, setUser] = useState(null)
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const navigate = useNavigate()
-    const location = useLocation()
+  const [user, setUser] = useState(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  // const location = useLocation()
 
-    const handleLogin = () => {
-        //API Call Here
-        const loggedInUser = {
-            name: 'Robert',
-            avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
-        }
-        setUser(loggedInUser)
+  const handleLogin = () => {
+    //API Call Here
+    const loggedInUser = {
+      name: 'Robert',
+      avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
     }
+    setUser(loggedInUser)
+  }
 
-    const handleLogout = () => {
-        setUser(null)
-        console.log('User Logged Out');
-    }
+  const handleLogout = () => {
+    setUser(null)
+    console.log('User Logged Out');
+  }
 
-    const go = (path) => () => {
-        navigate(path)
-        setIsMenuOpen(false)
-    }
+  const go = (path) => () => {
+    navigate(path)
+    setIsMenuOpen(false)
+  }
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
   return (
     <>
       <nav className="bg-white border-2  shadow-md flex justify-center">
@@ -47,16 +47,11 @@ const Navbar = () => {
               {/* Links */}
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
-  to="/"
-  className="relative inline-flex items-center px-4 my-2 text-base font-semibold text-gray-600 rounded-xl transition-all duration-300 ease-out hover:text-green-600 hover:scale-105 hover:bg-green-200"
->
-  Home
-</Link>
-
-
-
-
-
+                  to="/"
+                  className="relative inline-flex items-center px-4 my-2 text-base font-semibold text-gray-600 rounded-xl transition-all duration-300 ease-out hover:text-green-600 hover:scale-105 hover:bg-green-200"
+                >
+                  Home
+                </Link>
                 <Link
                   to="/culture"
                   className="relative inline-flex items-center px-4 my-2 text-base font-semibold text-gray-600 rounded-xl transition-all duration-300 ease-out hover:text-green-600 hover:scale-105 hover:bg-green-200"
@@ -83,23 +78,23 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex items-center space-x-4">
-              <Link
-                to="/login"
-                className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-green-600 hover:bg-green-50"
-              >
-                Log In
-              </Link>
-              <Link
-                to="/signup"
-                className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-md"
-              >
-                Sign Up
-              </Link>
-            </div>
+                <Link
+                  to="/login"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-green-600 hover:bg-green-50"
+                >
+                  Log In
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-green-600 hover:bg-green-700 shadow-md"
+                >
+                  Sign Up
+                </Link>
+              </div>
             </div>
 
             {/* Right-side buttons */}
-            
+
           </div>
         </div>
       </nav>
