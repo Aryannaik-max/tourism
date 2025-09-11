@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon, PlayIcon } from "@heroicons/react/24/outline";
 
 const youtubeVideos = [
   { id: '6NJJMH2k9LE', title: 'Jharkhand Scenic Water Reservoir' },
@@ -8,162 +9,8 @@ const youtubeVideos = [
   { id: 'kzgw0qjQRgw', title: 'Parasnath' },
 ];
 
-const ChevronLeftIcon = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-);
-
-const ChevronRightIcon = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <polyline points="9 18 15 12 9 6"></polyline>
-  </svg>
-);
-
-const PlayIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)" stroke="rgba(0,0,0,0.5)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <circle cx="12" cy="12" r="10" />
-        <polygon points="10 8 16 12 10 16 10 8" fill="black"/>
-    </svg>
-);
-
-const ComponentStyles = () => (
-  <style>{`
-    .yt-gallery-container {
-      min-height: 100vh;
-      background-color: #F0E1CF;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .yt-gallery-wrapper {
-      width: 100%;
-      max-width: 64rem;
-      margin: 0 auto;
-    }
-    .yt-gallery-main-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: #453A31;
-      padding: 3rem 3rem 2rem 3rem;
-    }
-    .yt-gallery-player-wrapper {
-      position: relative;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      background-color: #000;
-      margin-bottom: 2rem;
-    }
-    .yt-gallery-aspect-ratio {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    }
-    .yt-gallery-iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .yt-gallery-carousel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .yt-gallery-carousel-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #4a5568;
-    }
-    .yt-gallery-carousel-nav {
-      display: flex;
-    }
-    .yt-gallery-carousel-nav button:first-child {
-        margin-right: 0.5rem;
-    }
-    .yt-gallery-nav-button {
-      background-color: #fff;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 9999px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      cursor: pointer;
-      transition: background-color 150ms ease-in-out;
-    }
-    .yt-gallery-nav-button:hover {
-      background-color: #edf2f7;
-    }
-    .yt-gallery-nav-button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .yt-gallery-nav-button svg {
-      width: 1.5rem;
-      height: 1.5rem;
-      color: #718096;
-    }
-    .yt-gallery-carousel-body {
-      overflow: hidden;
-      position: relative;
-    }
-    .yt-gallery-carousel-slider {
-      display: flex;
-      transition: transform 500ms ease-in-out;
-    }
-    .yt-gallery-thumbnail-item {
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-    .yt-gallery-thumbnail-content {
-      position: relative;
-      border-radius: 0.375rem;
-      overflow: hidden;
-      transition: all 300ms ease-in-out;
-    }
-    .yt-gallery-thumbnail-item:hover .yt-gallery-thumbnail-content {
-        transform: scale(1.05);
-    }
-    .yt-gallery-thumbnail-selected {
-        box-shadow: 0 0 0 4px #06b6d4; /* ring-4 ring-cyan-500 */
-    }
-    .yt-gallery-thumbnail-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .yt-gallery-thumbnail-overlay {
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 150ms ease-in-out;
-    }
-    .yt-gallery-thumbnail-item:hover .yt-gallery-thumbnail-overlay {
-      opacity: 1;
-    }
-    
-    @media (min-width: 768px) {
-      .yt-gallery-main-title {
-        font-size: 2.25rem;
-      }
-    }
-  `}</style>
-);
-
 const YouTubeCarousel = () => {
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
-
   const [carouselStartIndex, setCarouselStartIndex] = useState(0);
 
   const videosPerPage = 4;
@@ -183,77 +30,76 @@ const YouTubeCarousel = () => {
   const videoSrc = `https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1&mute=1&rel=0`;
 
   return (
-    <>
-      <ComponentStyles />
-      <div className="yt-gallery-container">
-        <div className="yt-gallery-wrapper">
-          <h1 className="yt-gallery-main-title">Explore Virtual Reality Experience of these Destinations</h1>
-          
-          <div className="yt-gallery-player-wrapper">
-            <div className="yt-gallery-aspect-ratio">
-              <iframe
-                key={selectedVideo.id}
-                src={videoSrc}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="yt-gallery-iframe"
-              ></iframe>
-            </div>
+    <div className="flex flex-col items-center justify-center p-4 md:p-8 bg-[#243B55] rounded-2xl shadow-2xl text-white">
+      <div className="w-full max-w-6xl">
+        {/* Main Player */}
+        <div className="relative rounded-xl overflow-hidden shadow-2xl mb-8 border-4 border-[#4CAF50]">
+          <div className="relative w-full pt-[56.25%]"> {/* 16:9 Aspect Ratio */}
+            <iframe
+              key={selectedVideo.id}
+              src={videoSrc}
+              title={selectedVideo.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
           </div>
+        </div>
 
-          <div>
-            <div className="yt-gallery-carousel-header">
-              <div className="yt-gallery-carousel-nav">
-                <button
-                  onClick={() => scrollCarousel('prev')}
-                  disabled={carouselStartIndex === 0}
-                  className="yt-gallery-nav-button"
-                  aria-label="Previous videos"
-                >
-                  <ChevronLeftIcon />
-                </button>
-                <button
-                  onClick={() => scrollCarousel('next')}
-                  disabled={carouselStartIndex >= youtubeVideos.length - videosPerPage}
-                  className="yt-gallery-nav-button"
-                  aria-label="Next videos"
-                >
-                  <ChevronRightIcon />
-                </button>
-              </div>
-            </div>
+        {/* Carousel Header & Nav */}
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#4CAF50]">{selectedVideo.title}</h3>
+          <div className="flex space-x-2">
+            <button
+              onClick={() => scrollCarousel('prev')}
+              disabled={carouselStartIndex === 0}
+              className="p-2 rounded-full bg-white shadow-md transition-colors duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Previous videos"
+            >
+              <ChevronLeftIcon className="w-6 h-6 text-gray-600 hover:text-[#4CAF50]" />
+            </button>
+            <button
+              onClick={() => scrollCarousel('next')}
+              disabled={carouselStartIndex >= youtubeVideos.length - videosPerPage}
+              className="p-2 rounded-full bg-white shadow-md transition-colors duration-200 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Next videos"
+            >
+              <ChevronRightIcon className="w-6 h-6 text-gray-600 hover:text-[#4CAF50]" />
+            </button>
+          </div>
+        </div>
 
-            <div className="yt-gallery-carousel-body">
+        {/* Carousel Body */}
+        <div className="overflow-hidden relative">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${(carouselStartIndex * 100) / videosPerPage}%)` }}
+          >
+            {youtubeVideos.map((video, index) => (
               <div
-                className="yt-gallery-carousel-slider"
-                style={{ transform: `translateX(-${(carouselStartIndex * 100) / videosPerPage}%)` }}
+                key={video.id}
+                onClick={() => selectVideo(index)}
+                className="flex-shrink-0 cursor-pointer"
+                style={{ width: `${100 / videosPerPage}%`, padding: '0 8px' }}
               >
-                {youtubeVideos.map((video, index) => (
-                  <div
-                    key={video.id}
-                    onClick={() => selectVideo(index)}
-                    className="yt-gallery-thumbnail-item"
-                    style={{ width: `${100 / videosPerPage}%`, padding: '0 8px' }}
-                  >
-                    <div className={`yt-gallery-thumbnail-content ${selectedVideoIndex === index ? 'yt-gallery-thumbnail-selected' : ''}`}>
-                      <img
-                        src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
-                        alt={video.title}
-                        className="yt-gallery-thumbnail-image"
-                      />
-                      <div className="yt-gallery-thumbnail-overlay">
-                          <PlayIcon />
-                      </div>
-                    </div>
+                <div 
+                  className={`relative rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] ${selectedVideoIndex === index ? 'ring-4 ring-[#4CAF50]' : ''}`}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                    alt={video.title}
+                    className="w-full h-auto block"
+                  />
+                  <div className="absolute inset-0 bg-[#152A4C] bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-200 hover:opacity-100">
+                    <PlayIcon className="w-12 h-12 text-white" />
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

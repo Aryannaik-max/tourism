@@ -1,0 +1,15 @@
+module.exports = {
+    shopController: require('./shopController'),
+    iteneraryController: require('./iteneraryController'),
+    bookingController: require('./bookingController'),
+    shopController: require('./shopController'),
+    hotelController: require('./hotelController'),
+    postController: require('./postController'),
+    userController: require('./userController'),
+    touristProfileController: require('./touristProfileController'),
+    guideProfileController: require('./guideProfileController'),
+    // shopOwnerProfileController: require('./shopOwnerProfileController'),
+    hotelOwnerProfileController: require('./hotelownerProfileController'),
+    postLikeController: require('./postLikeController'),
+    commentLikeController: require('./commentLikeController'),
+}

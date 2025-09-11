@@ -260,7 +260,7 @@ const Map = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Map
+export default Map;
