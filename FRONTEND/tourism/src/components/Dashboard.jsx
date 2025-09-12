@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Package, Users, MessageSquare, Compass, MapPin, DollarSign, Search, Heart, MessageCircle, Send } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const TouristDashboard = () => {
   const [activeSection, setActiveSection] = useState('packages');
   const [searchQuery, setSearchQuery] = useState('');
-
+  const navigate = useNavigate();
   const renderSection = () => {
     switch (activeSection) {
       case 'packages':
@@ -76,18 +77,7 @@ const TouristDashboard = () => {
         );
       case 'chatbot':
         return (
-          <div className="space-y-6 text-center">
-            <h2 className="text-3xl font-bold text-gray-800">AI Chatbot</h2>
-            <p className="text-lg text-gray-600">Get instant answers and recommendations from our intelligent travel assistant.</p>
-            <div className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-lg border border-white/20">
-              <MessageSquare className="mx-auto w-12 h-12 text-emerald-600 mb-4"/>
-              <p className="text-gray-600">The AI Chatbot feature is currently a placeholder. Please check back later for full functionality.</p>
-              <div className="mt-6 flex items-center border border-gray-300 rounded-full px-4 py-2 bg-white/50">
-                <input type="text" placeholder="Type your message..." className="flex-grow bg-transparent focus:outline-none text-gray-800"/>
-                <button className="ml-2 p-2 bg-emerald-500 rounded-full text-white"><Send className="w-5 h-5"/></button>
-              </div>
-            </div>
-          </div>
+          navigate("/chatbot")
         );
       case 'itinerary':
         return (

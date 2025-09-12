@@ -26,7 +26,7 @@ function App() {
   const location = useLocation();
 
   // paths where Navbar and Footer should NOT appear
-  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner"];
+  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner","/chatbot","/login"];
 
   return (
     <>
