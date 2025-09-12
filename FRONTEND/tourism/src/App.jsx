@@ -19,6 +19,8 @@ import HotelOwnerSignupPage from "./pages/HotelOwnerSignUp";
 import HotelOwnerDashboard from "./pages/HotelOwnerDashboard";
 import VendorDashboard from "./pages/VendorDashboard";
 import ItineraryPlanner from "./pages/ItineraryPlanner";
+import Chatbot from "./pages/Aichatbot";
+import Login from "./pages/Login";
 
 function App() {
   const location = useLocation();
@@ -50,6 +52,8 @@ function App() {
         <Route path="/hotelowner/dashboard" element={<HotelOwnerDashboard />} />
         <Route path="/vendor/dashboard" element={<VendorDashboard />} />
         <Route path="/itinerary-planner" element={<ItineraryPlanner />} />
+        <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       {/* Hide Footer on dashboard routes */}
