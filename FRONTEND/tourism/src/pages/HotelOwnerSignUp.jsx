@@ -101,7 +101,7 @@ const HotelOwnerSignupPage = () => {
                   <div className="relative">
                     <label className="block text-sm font-medium text-gray-700 mb-2">PAN Number</label>
                     <div className="flex items-center space-x-2">
-                      <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <CreditCard className=" w-5 h-5 text-gray-400" />
                       <input
                         type="text"
                         name="panNumber"

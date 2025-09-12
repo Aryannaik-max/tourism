@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --slate-50: #f8fafc; --slate-100: #f1f5f9; --slate-200: #e2e8f0;
     --slate-500: #64748b; --slate-600: #475569; --slate-800: #1e293b;
     --slate-900: #0f172a; --cyan-400: #22d3ee; --cyan-500: #06b6d4;
@@ -313,4 +313,4 @@
     .dashboard-grid-cols-lg-4 .col-span-lg-2 { 
         grid-column: span 2 / span 2; 
     }
-}
+} */
