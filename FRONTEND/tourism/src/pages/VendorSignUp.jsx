@@ -61,7 +61,7 @@ const VendorSignupPage = () => {
     };
     console.log('Vendor signup data:', submitData);
     console.log('Files:', files);
-    navigate('//vendor/dashboard');
+    navigate('/vendor/dashboard');
 
   };
 
