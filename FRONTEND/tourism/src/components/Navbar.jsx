@@ -59,7 +59,7 @@ const Navbar = () => {
                   Culture
                 </Link>
                 <Link
-                  to="/tourism"
+                  to="/explore"
                   className="relative inline-flex items-center px-4 my-2 text-base font-semibold text-gray-600 rounded-xl transition-all duration-300 ease-out hover:text-green-600 hover:scale-105 hover:bg-green-200"
                 >
                   Tourism

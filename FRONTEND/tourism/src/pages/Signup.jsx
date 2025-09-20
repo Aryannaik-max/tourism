@@ -111,6 +111,8 @@ const Signup = () => {
       navigate('/vendor/signup');
     }else if(role=='hotel_owner') {
       navigate('/hotelowner/signup');
+    }else if(role=='guide') {
+      navigate('/');
     }
     // setTimeout(() => {
     //   console.log("Form submitted:", { role, email, password });

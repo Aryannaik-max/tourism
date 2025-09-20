@@ -19,7 +19,7 @@ const TouristDashboard = () => {
                 <p className="text-gray-700">A 3-day tour of Jharkhand's most stunning waterfalls including Hundru, Jonha, and Dassam Falls.</p>
                 <div className="mt-4 flex justify-between items-center text-sm text-gray-500">
                   <span><MapPin className="inline-block w-4 h-4 mr-1"/> Ranchi</span>
-                  <span><DollarSign className="inline-block w-4 h-4 mr-1"/> $250</span>
+                  <span><DollarSign className="inline-block w-4 h-4 mr-1"/> $ 250</span>
                 </div>
               </div>
               <div className="bg-white/70 backdrop-blur-lg p-6 rounded-3xl shadow-lg border border-white/20">
@@ -81,16 +81,9 @@ const TouristDashboard = () => {
         );
       case 'itinerary':
         return (
-          <div className="space-y-6 text-center">
-            <h2 className="text-3xl font-bold text-gray-800">Itinerary Planning</h2>
-            <p className="text-lg text-gray-600">Create a personalized travel plan tailored to your interests and timeline.</p>
-            <div className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-lg border border-white/20">
-              <Compass className="mx-auto w-12 h-12 text-emerald-600 mb-4"/>
-              <p className="text-gray-600">The Itinerary Planning feature is a placeholder. A fully functional tool to build your perfect trip is coming soon!</p>
-              <button className="mt-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105">Start Planning</button>
-            </div>
-          </div>
+          navigate("/itinerary-planner")
         );
+        
       default: return null;
     }
   };

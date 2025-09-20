@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, MapPin, Heart, Globe, Languages } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const TouristSignupPage = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const TouristSignupPage = () => {
     nationality: '',
     preferredLanguage: ''
   });
-
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -24,6 +25,7 @@ const TouristSignupPage = () => {
     e.preventDefault();
     console.log('Tourist signup data:', formData);
     // Add your signup logic here
+    navigate('/dashboard'); // Redirect to login or dashboard after signup
   };
 
   return (

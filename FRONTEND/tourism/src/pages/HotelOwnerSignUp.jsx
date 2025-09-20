@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Building, Mail, Phone, MapPin, FileText, Upload, CreditCard, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const HotelOwnerSignupPage = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const HotelOwnerSignupPage = () => {
     panCard: null,
     propertyDocument: null
   });
-
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -41,6 +42,7 @@ const HotelOwnerSignupPage = () => {
         ...prev,
         [`${fileType}Url`]: fakeUrl
       }));
+      navigate('/hotelowner/dashboard');
     }
   };
 

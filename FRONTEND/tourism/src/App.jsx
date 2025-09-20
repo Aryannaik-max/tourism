@@ -21,12 +21,12 @@ import VendorDashboard from "./pages/VendorDashboard";
 import ItineraryPlanner from "./pages/ItineraryPlanner";
 import Chatbot from "./pages/Aichatbot";
 import Login from "./pages/Login";
-
+import GuideSignUp from "./pages/GuideSignUp";
 function App() {
   const location = useLocation();
 
   // paths where Navbar and Footer should NOT appear
-  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner","/chatbot","/login"];
+  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner","/chatbot","/login", "/guide/signup"];
 
   return (
     <>
@@ -38,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/culture" element={<Culture />} />
-        <Route path="/tourism" element={<Tourism />} />
+        <Route path="/explore" element={<Tourism />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
@@ -54,6 +54,8 @@ function App() {
         <Route path="/itinerary-planner" element={<ItineraryPlanner />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/guide/signup" element={<GuideSignUp />} />
+        
       </Routes>
 
       {/* Hide Footer on dashboard routes */}

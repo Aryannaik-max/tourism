@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Palette, MapPin, FileText, Upload, Hammer, Star, Package } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const VendorSignupPage = () => {
@@ -11,7 +11,7 @@ const VendorSignupPage = () => {
     artisanCertificationUrl: '',
     identityProofUrl: ''
   });
-
+  const navigate = useNavigate();
   const [files, setFiles] = useState({
     artisanCertification: null,
     identityProof: null
@@ -61,6 +61,8 @@ const VendorSignupPage = () => {
     };
     console.log('Vendor signup data:', submitData);
     console.log('Files:', files);
+    navigate('//vendor/dashboard');
+
   };
 
   const craftSpecializations = [
