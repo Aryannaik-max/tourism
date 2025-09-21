@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, Users, MessageSquare, Compass, MapPin, DollarSign, Search, Heart, MessageCircle, Send } from 'lucide-react';
+import { Package, Users, MessageSquare, Compass, MapPin, DollarSign, Search, Heart, MessageCircle, Send, Map } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TouristDashboard = () => {
@@ -83,6 +83,10 @@ const TouristDashboard = () => {
         return (
           navigate("/itinerary-planner")
         );
+        case 'currentplan':
+        return (
+          navigate("/current-plan")
+        );
         
       default: return null;
     }
@@ -94,6 +98,9 @@ const TouristDashboard = () => {
         <aside className="w-full md:w-64 bg-emerald-900 text-white p-6 md:p-8 space-y-4">
           <div className="text-2xl font-bold mb-8">Tourist Dashboard</div>
           <nav className="space-y-2">
+            <a href="#" onClick={() => setActiveSection('currentplan')} className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${activeSection === 'itinerary' ? 'bg-emerald-700 font-semibold' : 'hover:bg-emerald-800'}`}>
+              <Map className="w-5 h-5" /> Current Plan
+            </a>
             <a href="#" onClick={() => setActiveSection('packages')} className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${activeSection === 'packages' ? 'bg-emerald-700 font-semibold' : 'hover:bg-emerald-800'}`}>
               <Package className="w-5 h-5" /> Packages
             </a>

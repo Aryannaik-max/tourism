@@ -73,8 +73,8 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                     {/* Full Name */}
                     <div className="relative">
                       <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                      <div className="flex items-center relative">
-                        <User className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                      <div className="flex space-x-3 items-center ">
+                        <User className="w-5 h-5 text-gray-400 " />
                         <input
                           type="text"
                           name="name"
@@ -89,8 +89,8 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                     {/* Email */}
                     <div className="relative">
                       <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                      <div className="flex items-center relative">
-                        <Mail className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                      <div className="flex space-x-3 items-center ">
+                        <Mail className="w-5 h-5 text-gray-400 " />
                         <input
                           type="email"
                           name="email"
@@ -108,8 +108,8 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                     {/* Phone Number */}
                     <div className="relative">
                       <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                      <div className="flex items-center relative">
-                        <Phone className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                      <div className="flex space-x-3 items-center ">
+                        <Phone className="w-5 h-5 text-gray-400" />
                         <input
                           type="tel"
                           name="phone"
@@ -124,8 +124,8 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                     {/* Specialization */}
                     <div className="relative">
                       <label className="block text-sm font-medium text-gray-700 mb-2">Specialization</label>
-                      <div className="flex items-center relative">
-                        <Tag className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                      <div className="flex space-x-3 items-center ">
+                        <Tag className="w-5 h-5 text-gray-400" />
                         <input
                           type="text"
                           name="specialization"
@@ -142,7 +142,7 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                   {/* Bio */}
                   <div className="relative">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
-                    <div className="flex items-center relative">
+                    <div className="flex space-x-3 items-center ">
                       <textarea
                         name="bio"
                         value={formData.bio}
@@ -158,8 +158,8 @@ const GuideSignupPage = ({ onSignupSuccess }) => {
                   {/* Location */}
                   <div className="relative">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                    <div className="flex items-center relative">
-                      <MapPin className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                    <div className="flex space-x-3 items-center ">
+                      <MapPin className="w-5 h-5 text-gray-400" />
                       <input
                         type="text"
                         name="location"

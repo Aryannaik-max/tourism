@@ -112,7 +112,9 @@ const Signup = () => {
     }else if(role=='hotel_owner') {
       navigate('/hotelowner/signup');
     }else if(role=='guide') {
-      navigate('/');
+      navigate('/guide/signup');
+    }else if(role=='tourism_official') {
+      navigate('/tourism-official/signup');
     }
     // setTimeout(() => {
     //   console.log("Form submitted:", { role, email, password });

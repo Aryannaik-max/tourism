@@ -22,11 +22,14 @@ import ItineraryPlanner from "./pages/ItineraryPlanner";
 import Chatbot from "./pages/Aichatbot";
 import Login from "./pages/Login";
 import GuideSignUp from "./pages/GuideSignUp";
+import TourismOfficialSignupPage from "./pages/TourismOfficialSignUp";
+import TourismOfficialDashboard from "./pages/TourismOfficialDashboard";
+
 function App() {
   const location = useLocation();
 
   // paths where Navbar and Footer should NOT appear
-  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner","/chatbot","/login", "/guide/signup"];
+  const noLayoutRoutes = ["/dashboard", "/hotelowner/dashboard", "/vendor/dashboard","/hotelowner/signup","/vendor/signup","/tourist/signup", "/signup", "/itinerary-planner","/chatbot","/login", "/guide/signup", "/tourism-official/signup", "/tourism-official/dashboard"];
 
   return (
     <>
@@ -55,6 +58,9 @@ function App() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/login" element={<Login />} />
         <Route path="/guide/signup" element={<GuideSignUp />} />
+        <Route path="tourism-official/signup" element={<TourismOfficialSignupPage />} />
+        <Route path="tourism-official/dashboard" element={<TourismOfficialDashboard />} />
+
         
       </Routes>
 

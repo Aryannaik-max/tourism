@@ -42,7 +42,6 @@ const HotelOwnerSignupPage = () => {
         ...prev,
         [`${fileType}Url`]: fakeUrl
       }));
-      navigate('/hotelowner/dashboard');
     }
   };
 
@@ -50,6 +49,7 @@ const HotelOwnerSignupPage = () => {
     e.preventDefault();
     console.log('Hotel owner signup data:', formData);
     console.log('Files:', files);
+    navigate('/hotelowner/dashboard');
   };
 
   return (
