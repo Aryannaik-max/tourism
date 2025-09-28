@@ -24,6 +24,7 @@ import Login from "./pages/Login";
 import GuideSignUp from "./pages/GuideSignUp";
 import TourismOfficialSignupPage from "./pages/TourismOfficialSignUp";
 import TourismOfficialDashboard from "./pages/TourismOfficialDashboard";
+import GuideDashboard from "./pages/GuideDashboard";
 
 function App() {
   const location = useLocation();
@@ -58,6 +59,7 @@ function App() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/login" element={<Login />} />
         <Route path="/guide/signup" element={<GuideSignUp />} />
+        <Route path="/guide/dashboard" element={<GuideDashboard />} />
         <Route path="tourism-official/signup" element={<TourismOfficialSignupPage />} />
         <Route path="tourism-official/dashboard" element={<TourismOfficialDashboard />} />
 

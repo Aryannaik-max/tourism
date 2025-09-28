@@ -29,7 +29,7 @@ const TourismOfficialSignupPage = () => {
     console.log('Tourism Official signup data:', formData);
     // In a real app, you would submit this data to a backend.
     // For this example, we'll just log it.
-    navigate('tourism-official/dashboard');
+    navigate('/tourism-official/dashboard');
   };
 
   return (
